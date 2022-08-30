@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Phalcon PHP Framework</title>
+       <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/vue@3"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    </head>
+    <body>
+        <!-- This example requires Tailwind CSS v2.0+ -->
+        <div id="app" class="bg-gray-50">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+              <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <span class="block"> {{ message }} </span>
+                <span class="block text-indigo-600">Start to count <button @click="count++">{{ count }}</button></span>
+              </h2>
+              <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                  <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"> Get started </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                  <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"> Learn more </a>
+                </div>
+              </div>
+            </div>
+
+
+
+
+        <li v-for="company in companies">
+          {{ company.name }}
+        </li>
+
+
+
+        </div>
+         <script>
+          const { createApp } = Vue
+
+          createApp({
+
+            data() {
+              return {
+                message: 'Hello Vue!',
+                count: 12,
+                companies: null
+              }
+            },
+             created() {
+                // Simple GET request using fetch
+                fetch("/api/companies")
+                  .then(response => response.json())
+                  .then(data => (this.companies = data));
+              }
+
+          }).mount('#app');
+
+        </script>
+
+
+
+
+
+
+
+
+        <!-- jQuery first, then Popper.js, and then Bootstrap's JavaScript -->
+        <!--  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+
+    </body>
+</html>

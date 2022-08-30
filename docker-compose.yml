@@ -1,0 +1,66 @@
+version: "3"
+services:
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+          - 8080:8080
+    mysql:
+       container_name: mysql
+       platform: linux/x86_64
+       image: mysql:8.0.22
+       environment:
+           MYSQL_DATABASE: app
+           MYSQL_USER: user
+           MYSQL_PASSWORD: user_pw
+           MYSQL_ROOT_PASSWORD: root_pw
+       command: ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+       volumes:
+           - ./mysql/data:/var/lib/mysql:rw
+       ports:
+           - "3306:3306"
+       restart: always
+       logging:
+           options:
+               max-size: "1m"
+               max-file: "3"
+    php:
+        container_name: php
+        build:
+            context: ./php
+            dockerfile: Dockerfile
+            args:
+                - WITH_XDEBUG=true
+        working_dir: /var/www/html
+        volumes:
+            - ./php/asset/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
+            - ./php/asset/file.ini:/usr/local/etc/php/conf.d/file.ini
+            - ./phalcon:/var/www/html:rw
+        command: bash -c "php-fpm"
+        restart: always
+        logging:
+            options:
+                max-size: "1m"
+                max-file: "3"
+
+    nginx:
+        container_name: nginx
+        image: nginx:1.17.8
+        command: ["nginx", "-g", "daemon off;"]
+        working_dir: /var/www/html
+        depends_on:
+           - php
+           - mysql
+        volumes:
+           - ./nginx/asset/:/etc/nginx/conf.d/
+           - ./nginx/log:/var/log/nginx/:rw
+           - ./phalcon:/var/www/html:rw
+        ports:
+           - "80:80"
+        links:
+           - php
+        restart: always
+        logging:
+           options:
+               max-size: "1m"
+               max-file: "3"
