@@ -8,7 +8,7 @@ Ce projet a pour but de concevoir et réaliser un mini ERP (Entreprise Ressource
 
 ###### Docker
 
-Pour lancer le container clonez le sur votre machine, placez vous dans le dossier avec un terminal et tapez : 
+Pour lancer le container clonez le répertoire git sur votre machine, placez vous dans le dossier avec un terminal et tapez : 
 ```
 docker-compose up -d 
 ```
