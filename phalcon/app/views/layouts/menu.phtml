@@ -1,0 +1,114 @@
+<div id="app" v-cloak>
+  <div v-if="sidebarOpen">
+    <div class="fixed inset-0 flex z-40 md:hidden" @close="sidebarOpen = false">
+        <div @click="sidebarOpen = false" class="fixed inset-0 bg-gray-600 bg-opacity-75"> </div>
+        <div class="relative flex-1 flex flex-col max-w-xs w-full h-full bg-indigo-700">
+          <div class="flex-1 h-0 pt-3 pb-4 overflow-y-auto">
+            <div class="flex-shrink-0 flex items-center">
+                 <button type="button" class="ml-2 mr-2 text-white flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" @click="sidebarOpen = false">
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  </svg>
+                </button>
+                <a class="text-2xl text-white"><span>my</span><span class="font-bold">ERP</span></a>
+            </div>
+            <nav class="mt-5 px-2 space-y-1">
+              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-indigo-800 text-white' : 'text-white hover:bg-indigo-600 hover:bg-opacity-75', 'group flex items-center px-2 py-2 text-base font-medium rounded-md']">
+                {{ item.name }}
+              </a>
+            </nav>
+          </div>
+          <div class="flex-shrink-0 flex border-t border-indigo-800 p-4">
+            <div class="flex items-center">
+              <div>
+                <img class="inline-block h-10 w-10 rounded-full" src="https://i.pinimg.com/280x280_RS/35/a1/e6/35a1e6d69cf6924b6076d864a5d39e95.jpg" alt="" />
+              </div>
+              <div class="ml-3">
+                <p class="text-base font-medium text-white capitalize">{{user_session.username}}</p>
+                <a href="index/disconnect" class="text-sm font-medium text-indigo-200 hover:text-white">Se déconnecter</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <div class="flex-shrink-0 w-14" aria-hidden="true">
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu latéral -->
+  <div class="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
+    <div class="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
+      <div class="flex items-center flex-shrink-0 px-4">
+        <a class="text-2xl text-white"><span>my</span><span class="font-bold">ERP</span></a>
+      </div>
+      <div class="mt-5 flex-1 flex flex-col">
+        <nav class="flex-1 px-2 pb-4 space-y-1">
+          <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-600', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
+            {{ item.name }}
+          </a>
+        </nav>
+      </div>
+      <div class="flex-shrink-0 flex border-t border-indigo-800 p-4">
+        <div class="flex items-center">
+          <div>
+            <img class="inline-block h-10 w-10 rounded-full" src="https://i.pinimg.com/280x280_RS/35/a1/e6/35a1e6d69cf6924b6076d864a5d39e95.jpg" alt="" />
+          </div>
+          <div class="ml-3">
+            <p class="text-base font-medium text-white capitalize">{{user_session.username}}</p>
+            <a href="index/disconnect" class="text-sm font-medium text-indigo-200 hover:text-white">Se déconnecter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="md:pl-64 flex flex-col flex-1">
+    <div class="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow">
+      <button type="button" class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden" @click="sidebarOpen = !sidebarOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+
+      </button>
+      <div class="flex-1 px-4 flex justify-between">
+        <div class="ml-4 flex items-center md:ml-6">
+            <span> <?= ucfirst(dateToFrench("now","l j F Y - ")); ?> {{ timestamp }} </span>
+        </div>
+
+        <div class="ml-4 mr-4 flex items-center md:ml-6">
+          <a href="mailto:julien.cpln@gmail.com">
+            <div class="text-indigo-700 hover:text-indigo-400 flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-4.138-5.976a3.736 3.736 0 00-.88-1.388 3.737 3.737 0 00-1.388-.88m2.268 2.268a3.765 3.765 0 010 2.528m-2.268-4.796a3.765 3.765 0 00-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 01-1.388.88m2.268-2.268l4.138 3.448m0 0a9.027 9.027 0 01-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m5.976-4.138a3.765 3.765 0 01-2.528 0m0 0a3.736 3.736 0 01-1.388-.88 3.737 3.737 0 01-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 01-1.652-1.306 9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 5.976a3.765 3.765 0 010-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 011.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 00-1.652 1.306A9.025 9.025 0 004.33 7.288" />
+              </svg>
+              <label class="ml-1">Besoin d'aide ?</label>
+
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <main>
+      <div class="py-6">
+        <div class="mx-100  px-4 sm:px-6 md:px-8">
+          <h1 class="text-2xl font-semibold text-gray-900">
+             <span v-for="item in navigation">
+              <span v-if="item.current == true">
+              {{item.name}}
+              </span>
+             </span>
+          </h1>
+        </div>
+        <div class="mx-100 px-4 sm:px-6 md:px-8">
+          <?php $this->partial('layouts/table'); ?>
+          <?php $this->partial('layouts/modal'); ?>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+<script>
+  // session PHP vers JS
+  var user_session = <?php echo json_encode($_SESSION['user_session']);?>;
+</script>

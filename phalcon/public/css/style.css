@@ -1,0 +1,10 @@
+.gridjs-table {
+	/*Fix le bug de largeur sur gridjs*/
+	width: 100%; 
+}
+
+/*Permet de surligner les lignes au survol*/
+#wrapper.admin tr:hover td {
+background-color: rgba(0, 0, 0, 0.02);
+cursor: pointer;
+}

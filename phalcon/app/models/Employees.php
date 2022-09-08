@@ -8,5 +8,6 @@ class Employees extends Model
     public $name;
     public $birthday;
     public $country;
+    public $id_company;
     public $first_day;
 }

@@ -3,13 +3,12 @@ declare(strict_types=1);
 
 class IndexController extends ControllerBase
 {
-
     public function indexAction()
     {
-        if (!isset($_SESSION['username'])){
-           $this->response->redirect('/login');
+         if(isset(($this->session->user_session)))
+        {
+            $this->response->redirect('/companies');
         }
     }
-
 }
 

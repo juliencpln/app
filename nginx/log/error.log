@@ -1,0 +1,1 @@
+2022/09/07 21:35:01 [error] 8#8: *9015 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.31.0.1, server: localhost, request: "GET /api/companies HTTP/1.1", upstream: "fastcgi://172.31.0.2:9000", host: "localhost"

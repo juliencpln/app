@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MyERP - Entreprise Ressources Planning</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <script  src="https://unpkg.com/vue@3"></script>
+        <?= \Phalcon\Tag::stylesheetLink("css/style.css"); ?>
+        <script type="importmap">
+		  {
+		    "imports": {
+		      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+		    }
+		  }
+		</script>
+
+        <script type="module">
+            import {
+                Grid,
+                html
+            } from "https://unpkg.com/gridjs?module";
+        </script>
+        <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+        <style type="text/css">[v-cloak] {display: none; }</style> 
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    </head>
+    <body class="bg-gray-50">
+    	<?php 
+    	if(isset(($this->session->user_session))){
+            echo \Phalcon\Tag::javascriptInclude("js/table_filler.js");
+            echo \Phalcon\Tag::javascriptInclude("js/manage_modal.js");
+            echo \Phalcon\Tag::javascriptInclude("js/country.js");
+            echo \Phalcon\Tag::javascriptInclude("js/tools.js");
+
+            $this->partial('layouts/menu');
+            echo \Phalcon\Tag::javascriptInclude([
+            'src'  => 'js/layout_init.js',
+            'type' => 'module',
+            ]);
+    	}
+        else
+        {
+            echo $this->getContent();
+        }
+    	?>
+       
+		 <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+	</body>
+</html>
