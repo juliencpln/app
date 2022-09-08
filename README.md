@@ -40,11 +40,11 @@ Un export de la base de données existe dans /mysql/app.sql
 
 - Utilisateur	: admin
 - Mot de passe : admin
-Toutes permissions
+- Toutes permissions
 
 - Utilisateur	: guest
 - Mot de passe : guest
-Lecture seule
+- Lecture seule
 
 
 ## Problèmes
