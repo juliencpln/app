@@ -10,14 +10,16 @@ class Products extends Model
     public $tax;
     public $stock;
 
-     public static function getStock($id, $stock = NULL)
+    public static function getStock($id, $stock = NULL)
     {
 
+        // Dans le cas où le stock n'est pas connu, on le récupère
         if(!$stock){
             $product = Products::findFirst(['conditions' => 'id = '.$id]);
             $stock = $product->stock;
         }
 
+        // Parcourir toutes les transactions pour ce produit
         $transactions = Transactions::find(['conditions' => 'id_product = '.$id] );
 
         foreach ($transactions as $value) {
@@ -32,8 +34,7 @@ class Products extends Model
                 $stock += $value->quantity_product;
             }
         }
-
+        
         return $stock;
     }
-
 }

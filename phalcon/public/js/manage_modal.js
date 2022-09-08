@@ -134,51 +134,72 @@ const mixin_manage_modal = {
   		onSubmit(e){
             e.preventDefault();
 
-            if(!this.data.id){
-           	// Dans le cas d'un ajout
+			let request = {};
+			let method = '';
+			let apiRoute = '';
 
-					let request = {};
-					// Récupération de toutes les entrée du formulaire
-					Object.keys(this.data).forEach(key => {
-					 	if((key == 'id_client' ||  key == 'id_provider') && this.data[key] == ''){
-					 		request[key] = null;
-						}
-						else
-						{
-							request[key] = this.data[key];
-						}
-					});
+			// Récupération de toutes les entrée du formulaire
+			Object.keys(this.data).forEach(key => {
+			 	if((key == 'id_client' ||  key == 'id_provider') && this.data[key] == ''){
+			 		//id_client et id_provider à null pour être correctement insérés en base de données (foreign_key)
+			 		request[key] = null;
+				}
+				else
+				{
+					request[key] = this.data[key];
+				}
+			});
 
-					fetch('api'+source, {
-					  method: "POST",
-					  body: JSON.stringify(request),
-					  headers: {"Content-type": "application/json; charset=UTF-8"}
-					})
-					.then(response => response.json())
-            		.then((result) => {
-						if(result.last_id){
-							this.modalOpen = false;
-							// Récupération du dernier id inseré
-							request['id'] = result.last_id;
-							fetchedData.unshift(request);
-							// Rendu du tableau avec la donnée ajoutée
-							grid.updateConfig({
-								data: fetchedData,
-							}).forceRender();
-						}
-						else
-						{
-							this.messageError = result.message;
-						}
+			// Détermine si c'est une création ou une modification
+		    if(!this.data.id){
+		    	// Création
+		    	method = "POST";
+		    	apiRoute = 'api'+source;
 
-					});
+		    }
+		    else
+		    {
+		    	// Modification
+		    	method = "PUT";
+		    	apiRoute = 'api'+source+'/'+this.data.id;
+		    }
 
-            }
-            else
-            {
-            	// Dans le cas d'une modification
-            }
-           
+			fetch(apiRoute, {
+			  method: method,
+			  body: JSON.stringify(request),
+			  headers: {"Content-type": "application/json; charset=UTF-8"}
+			})
+			.then(response => response.json())
+    		.then((result) => {
+				if(result.last_id){
+					this.modalOpen = false;
+					
+					// Récupération du dernier id
+					request['id'] = result.last_id;
+					if(method == 'POST'){
+						// Ajout du nouveau résultat au tableau
+						fetchedData.unshift(request);
+					}
+					else
+					{	
+						// Recherche et remplace le résultat mis à jour
+						let test = fetchedData.find((result,index) => {
+							if(result.id === request['id']){
+								fetchedData[index] = request;
+							};
+						});
+					}
+					// Rendu du tableau avec la donnée ajoutée
+					grid.updateConfig({
+						data: fetchedData,
+					}).forceRender();
+				}
+				else
+				{
+					this.messageError = result.message;
+				}
+
+			});
         },
 	    deleteData: function(id) {
 	  		

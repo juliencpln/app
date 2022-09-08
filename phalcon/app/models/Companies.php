@@ -11,12 +11,13 @@ class Companies extends Model
 
     public static function getBalance($id, $balance = NULL)
     {
-
+        // Dans le cas ou le solde n'est pas connu, on le récupère
         if(!$balance){
             $company = Companies::findFirst(['conditions' => 'id = '.$id]);
             $balance = $company->balance;
         }
 
+        // Parcourir toutes les transaction pour cette compagnie
         $transactions = Transactions::find(['conditions' => 'id_company = '.$id] );
 
         foreach ($transactions as $value) {
@@ -39,5 +40,4 @@ class Companies extends Model
 
         return $balance;
     }
-
 }
