@@ -51,8 +51,9 @@ Un export de la base de données existe dans /mysql/app.sql
 ## Problèmes
 
 Les problèmes pouvant être rencontrés lors de la mise en place de l'environnement : 
-> ERROR: for db  Cannot create container for service db: status code not OK but 500: {"Message":"Unhandled exception: Filesharing has been cancelled"}
-<br>Résolution : Dans Docker, il faut ajouter le chemin du dossier dans le partage de fichier > Réglages > Ressources > Partage de fichier  
+> ERROR: for db  Cannot create container for service db: status code not OK but 500: {"Message":"Unhandled exception: Filesharing has been cancelled"} 
+<br><br>
+Résolution : Dans Docker, il faut ajouter le chemin du dossier dans le partage de fichier > Réglages > Ressources > Partage de fichier  
 
 
 ## Test unitaires : 
