@@ -37,15 +37,16 @@ Un export de la base de données existe dans /mysql/app.sql
 ###### Connexion
 
 À l'adresse http://localhost/login il est possible de ce connecter via : 
-
+<br><br>
 - Utilisateur	: admin
 - Mot de passe : admin
 - Toutes permissions
 
+  <br>
 - Utilisateur	: guest
 - Mot de passe : guest
 - Lecture seule
-
+<br>
 
 ## Problèmes
 
@@ -56,7 +57,7 @@ Les problèmes pouvant être rencontrés lors de la mise en place de l'environne
 
 ## Test unitaires : 
 
-Dans le container PHP en ligne de commande :
+Dans le container PHP, en ligne de commande :
 ```
 $ vendor/bin/phpunit
 ```
