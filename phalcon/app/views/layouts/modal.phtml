@@ -10,11 +10,10 @@
 			            <div class="mt-3 sm:mt-0 sm:ml-4 sm:text-left">
 						    <div class="pt-2 pb-4">
 						        <div>
-						          <h3 v-if="data.id" class="text-lg leading-6 font-medium text-gray-900">Modifier une entrée</h3>
-						          <h3 v-else class="text-lg leading-6 font-medium text-gray-900">Ajouter une entrée</h3>
+						          	<h3 v-if="data.id" class="text-lg leading-6 font-medium text-gray-900">Modifier une entrée</h3>
+						          	<h3 v-else class="text-lg leading-6 font-medium text-gray-900">Ajouter une entrée</h3>
 						        </div>
 						        <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-
 						        	<div v-if='messageError' class="rounded-md bg-red-50 p-4 sm:col-span-6">
 							            <div class="flex items-center">
 							                <div class="flex-shrink-0 text-red-400">
@@ -30,40 +29,39 @@
 							            </div>
 							        </div>
 
-						          <div v-if="source != '/transactions'" class="sm:col-span-6">
-						            <label for="name" class="block text-sm font-medium text-gray-700"> Nom </label>
-						            <div class="mt-1">
-						              <input type="text" name="name" v-model="data.name" id="name" autocomplete="name" placeholder="Nom" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
-						            </div>
-						          </div>
+							        <div v-if="source != '/transactions'" class="sm:col-span-6">
+							            <label for="name" class="block text-sm font-medium text-gray-700"> Nom </label>
+							            <div class="mt-1">
+							              	<input type="text" name="name" v-model="data.name" id="name" autocomplete="name" placeholder="Nom" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
+							            </div>
+							       	</div>
 
-			
-						        <div v-if="source == '/companies'" class="sm:col-span-3">
-									<label for="balance" class="block text-sm font-medium text-gray-700">Solde</label>
-									<div class="relative mt-1 rounded-md shadow-sm">
-										<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-										  <span class="text-gray-500 sm:text-sm">€</span>
+				
+							        <div v-if="source == '/companies'" class="sm:col-span-3">
+										<label for="balance" class="block text-sm font-medium text-gray-700">Solde</label>
+										<div class="relative mt-1 rounded-md shadow-sm">
+											<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+											  	<span class="text-gray-500 sm:text-sm">€</span>
+											</div>
+											<input type="text" name="balance" v-model="data.balance" id="balance" autocomplete="balance" class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="0.00">
 										</div>
-										<input type="text" name="balance" v-model="data.balance" id="balance" autocomplete="balance" class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="0.00">
-									</div>
-								</div>	
+									</div>	
 
-						          <div v-if="source != '/transactions' && source != '/products'" class="sm:col-span-3">
-						            <label for="country" class="block text-sm font-medium text-gray-700"> Pays </label>
-						            <div class="mt-1">
-						              <select id="country" name="country" v-model="data.country" autocomplete="country-name" placeholder="Choisir un pays" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-						                <option value="" disabled>Choisir un pays</option>
-
-						                <option v-for="country in countryList">{{country}}</option>
-						              </select>
-						            </div>
-						          </div>
+						          	<div v-if="source != '/transactions' && source != '/products'" class="sm:col-span-3">
+							            <label for="country" class="block text-sm font-medium text-gray-700"> Pays </label>
+							            <div class="mt-1">
+								              <select id="country" name="country" v-model="data.country" autocomplete="country-name" placeholder="Choisir un pays" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+									                <option value="" disabled>Choisir un pays</option>
+									                <option v-for="country in countryList">{{country}}</option>
+								              </select>
+							            </div>
+						         	</div>
 
 							        <div v-if="source == '/products'"  class="sm:col-span-3">
 										<label for="price" class="block text-sm font-medium text-gray-700">Prix</label>
 										<div class="relative mt-1 rounded-md shadow-sm">
 											<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-											  <span class="text-gray-500 sm:text-sm">€</span>
+											  	<span class="text-gray-500 sm:text-sm">€</span>
 											</div>
 											<input type="text" name="price" v-model="data.price" id="price" autocomplete="price"  class="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="0.00">
 										</div>
@@ -80,115 +78,105 @@
 										</div>
 									</div>
 
-						          <div v-if="source == '/products'" class="sm:col-span-3">
-						            <label for="stock" class="block text-sm font-medium text-gray-700"> Quantité </label>
-						            <div class="mt-1">
-						              <input type="text" name="stock" v-model="data.stock" id="stock" autocomplete="stock" placeholder="Exemple : 100"class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
-						            </div>
-						          </div>
+						          	<div v-if="source == '/products'" class="sm:col-span-3">
+						            	<label for="stock" class="block text-sm font-medium text-gray-700"> Quantité </label>
+							            <div class="mt-1">
+							              	<input type="text" name="stock" v-model="data.stock" id="stock" autocomplete="stock" placeholder="Exemple : 100"class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
+							            </div>
+						           </div>
 
-						          <div v-if="source == '/providers' || source == '/clients'" class="sm:col-span-3">
-						            <label for="address" class="block text-sm font-medium text-gray-700"> Adresse </label>
-						            <div class="mt-1">
-						              <input type="text" name="address" v-model="data.address" id="address" autocomplete="address" placeholder="Adresse, code postal, ville" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
-						            </div>
-						          </div>
+						          	<div v-if="source == '/providers' || source == '/clients'" class="sm:col-span-3">
+							            <label for="address" class="block text-sm font-medium text-gray-700"> Adresse </label>
+							            <div class="mt-1">
+							              	<input type="text" name="address" v-model="data.address" id="address" autocomplete="address" placeholder="Adresse, code postal, ville" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
+							            </div>
+						          	</div>
 
+						          	<div v-if="source == '/employees'" class="sm:col-span-3">
+						            	<label for="birthday" class="block text-sm font-medium text-gray-700"> Anniversaire </label>
+							            <div class="mt-1">
+							              	<input type="text" name="birthday" v-model="data.birthday" id="birthday" autocomplete="birthday" placeholder="dd/mm/yyyy" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
+							            </div>
+						          	</div>
 
-						          <div v-if="source == '/employees'" class="sm:col-span-3">
-						            <label for="birthday" class="block text-sm font-medium text-gray-700"> Anniversaire </label>
-						            <div class="mt-1">
-						              <input type="text" name="birthday" v-model="data.birthday" id="birthday" autocomplete="birthday" placeholder="dd/mm/yyyy" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
-						            </div>
-						          </div>
+							        <div v-if="source == '/employees'" class="sm:col-span-3">
+							            <label for="id_company" class="block text-sm font-medium text-gray-700"> Entreprise </label>
+							            <div class="mt-1">
+							              <select @change="changeCompany()" id="data.id_company" name="data.id_company" v-model="data.id_company" autocomplete="data.id_company" placeholder="Choisir une entreprise" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+							                <option value="" disabled>Choisir une entreprise</option>
+							                <option :value="companie.id" v-for="companie in companiesList">{{companie.id}} - {{companie.name}} ({{companie.balance}}€)</option>
+							              </select>
+							            </div>
+							        </div>
 
-						        <div v-if="source == '/employees'" class="sm:col-span-3">
-						            <label for="id_company" class="block text-sm font-medium text-gray-700"> Entreprise </label>
-						            <div class="mt-1">
-						              <select @change="changeCompany()" id="data.id_company" name="data.id_company" v-model="data.id_company" autocomplete="data.id_company" placeholder="Choisir une entreprise" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-						                <option value="" disabled>Choisir une entreprise</option>
+							        <div v-if="source == '/employees'" class="sm:col-span-3">
+							            <label for="first_day" class="block text-sm font-medium text-gray-700"> Date d'entrée </label>
+							            <div class="mt-1">
+							              <input type="text" name="first_day" v-model="data.first_day" id="first_day" autocomplete="first_day" placeholder="dd/mm/yyyy" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
+							            </div>
+							        </div>
 
-						                <option :value="companie.id" v-for="companie in companiesList">{{companie.id}} - {{companie.name}} ({{companie.balance}}€)</option>
-						              </select>
-						            </div>
-						        </div>
+						          	<div v-if="source == '/transactions'" class="sm:col-span-6">
+							            <label for="id_company" class="block text-sm font-medium text-gray-700"> Entreprise </label>
+							            <div class="mt-1">
+								            <select @change="changeCompany()" id="data.id_company" name="data.id_company" v-model="data.id_company" autocomplete="data.id_company" placeholder="Choisir une entreprise" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+									            <option value="" disabled>Choisir une entreprise</option>
+									            <option :value="companie.id" v-for="companie in companiesList">{{companie.id}} - {{companie.name}} ({{companie.balance}}€)</option>
+								            </select>
+							            </div>
+							        </div>
 
-						        <div v-if="source == '/employees'" class="sm:col-span-3">
-						            <label for="first_day" class="block text-sm font-medium text-gray-700"> Date d'entrée </label>
-						            <div class="mt-1">
-						              <input type="text" name="first_day" v-model="data.first_day" id="first_day" autocomplete="first_day" placeholder="dd/mm/yyyy" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
-						            </div>
-						          </div>
+							        <div v-if="source == '/transactions'" class="sm:col-span-6 italic text-sm  text-gray-600">
+							          	<p>Choissisez un fournisseur ou un client en fonction du type d'action (achat ou vente)</p>
+							        </div>
 
-						          <div v-if="source == '/transactions'" class="sm:col-span-6">
-						            <label for="id_company" class="block text-sm font-medium text-gray-700"> Entreprise </label>
-						            <div class="mt-1">
-						              <select @change="changeCompany()" id="data.id_company" name="data.id_company" v-model="data.id_company" autocomplete="data.id_company" placeholder="Choisir une entreprise" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-						                <option value="" disabled>Choisir une entreprise</option>
+							        <div v-if="source == '/transactions'" class="sm:col-span-3">
+							            <label for="id_provider" class="block text-sm font-medium text-gray-700"> Fournisseur (achat) </label>
+							            <div class="mt-1">
+							              	<select  @change="changeProvider()" id="data.id_provider" name="data.id_provider" v-model="data.id_provider" autocomplete="data.id_provider" placeholder="Choisir un fournisseur" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+								                <option value="" disabled>Choisir un fournisseur</option>
+								               	<option :value="provider.id" v-for="provider in providersList">{{provider.id}} - {{provider.name}}</option>
+							              	</select>
+							            </div>
+							        </div>
 
-						                <option :value="companie.id" v-for="companie in companiesList">{{companie.id}} - {{companie.name}} ({{companie.balance}}€)</option>
-						              </select>
-						            </div>
-						        </div>
+							        <div v-if="source == '/transactions'" class="sm:col-span-3">
+							            <label for="id_client" class="block text-sm font-medium text-gray-700"> Client (vente) </label>
+							            <div class="mt-1">
+								            <select @change="changeClient()" id="data.id_client" name="data.id_client" v-model="data.id_client" autocomplete="data.id_client" placeholder="Choisir un client" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+									            <option value="" disabled>Choisir un client</option>
+									            <option :value="client.id" v-for="client in clientsList">{{client.id}} - {{client.name}}</option>
+								            </select>
+							            </div>
+							       	</div>
 
-						          <div v-if="source == '/transactions'" class="sm:col-span-6 italic text-sm  text-gray-600">
-						          	Choissisez un fournisseur ou un client en fonction du type d'action (achat ou vente)
-						          </div>
+							        <div v-if="source == '/transactions'" class="sm:col-span-3">
+							            <label for="id_product" class="block text-sm font-medium text-gray-700"> Produit </label>
+							            <div class="mt-1">
+								            <select id="data.id_product" name="data.id_product" v-model="data.id_product" autocomplete="data.id_product" placeholder="Choisir un produit" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+								                <option value="" disabled>Choisir un produit</option>
+								                <option :value="product.id" v-for="product in productsList">{{product.id}} - {{product.name}} ({{product.stock}} restants, {{product.price}}€)</option>
+								            </select>
+							            </div>
+							        </div>
 
-						           <div v-if="source == '/transactions'" class="sm:col-span-3">
-						            <label for="id_provider" class="block text-sm font-medium text-gray-700"> Fournisseur (achat) </label>
-						            <div class="mt-1">
-						              <select  @change="changeProvider()" id="data.id_provider" name="data.id_provider" v-model="data.id_provider" autocomplete="data.id_provider" placeholder="Choisir un fournisseur" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-						                <option value="" disabled>Choisir un fournisseur</option>
+							        <div v-if="source == '/transactions'" class="sm:col-span-3">
+							            <label for="quantity_product" class="block text-sm font-medium text-gray-700"> Quantité </label>
+							            <div class="mt-1">
+							              	<input type="text" name="quantity_product" v-model="data.quantity_product" id="quantity_product" autocomplete="quantity_product" placeholder="Exemple : 100"class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
+							            </div>
+							        </div>
 
-						               	<option :value="provider.id" v-for="provider in providersList">{{provider.id}} - {{provider.name}}</option>
-
-						              </select>
-						            </div>
-						          </div>
-
-						         <div v-if="source == '/transactions'" class="sm:col-span-3">
-						            <label for="id_client" class="block text-sm font-medium text-gray-700"> Client (vente) </label>
-						            <div class="mt-1">
-						              <select @change="changeClient()" id="data.id_client" name="data.id_client" v-model="data.id_client" autocomplete="data.id_client" placeholder="Choisir un client" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-						                <option value="" disabled>Choisir un client</option>
-
-						               	<option :value="client.id" v-for="client in clientsList">{{client.id}} - {{client.name}}</option>
-
-						              </select>
-						            </div>
-						          </div>
-
-						          <div v-if="source == '/transactions'" class="sm:col-span-3">
-						            <label for="id_product" class="block text-sm font-medium text-gray-700"> Produit </label>
-						            <div class="mt-1">
-						              <select id="data.id_product" name="data.id_product" v-model="data.id_product" autocomplete="data.id_product" placeholder="Choisir un produit" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
-						                <option value="" disabled>Choisir un produit</option>
-
-						                <option :value="product.id" v-for="product in productsList">{{product.id}} - {{product.name}} ({{product.stock}} restants, {{product.price}}€)</option>
-						              </select>
-						            </div>
-						          </div>
-
-						          <div v-if="source == '/transactions'" class="sm:col-span-3">
-						            <label for="quantity_product" class="block text-sm font-medium text-gray-700"> Quantité </label>
-						            <div class="mt-1">
-						              <input type="text" name="quantity_product" v-model="data.quantity_product" id="quantity_product" autocomplete="quantity_product" placeholder="Exemple : 100"class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
-						            </div>
-						          </div>
-
-						          <div v-if="source == '/transactions'" class="sm:col-span-6">
-						            <label for="id_employee" class="block text-sm font-medium text-gray-700"> Référent </label>
-						            <div class="mt-1">
-						              <select :disabled="!data.id_company" id="id_employee" name="id_employee" v-model="data.id_employee" autocomplete="id_employee" placeholder="Choisir une entreprise" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md disabled">
-						                <option v-if="!data.id_company" value="" disabled>Veuillez d'abord selectionner une entreprise</option>
-						                <option v-else value="" disabled>Veuillez choisir un référent</option>
-
-						                <option :value="employee.id" v-for="employee in employeesList">{{employee.name}}</option>
-						              </select>
-						            </div>
-						          </div>
-
+							        <div v-if="source == '/transactions'" class="sm:col-span-6">
+							            <label for="id_employee" class="block text-sm font-medium text-gray-700"> Référent </label>
+							            <div class="mt-1">
+								            <select :disabled="!data.id_company" id="id_employee" name="id_employee" v-model="data.id_employee" autocomplete="id_employee" placeholder="Choisir une entreprise" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md disabled">
+								                <option v-if="!data.id_company" value="" disabled>Veuillez d'abord selectionner une entreprise</option>
+								                <option v-else value="" disabled>Veuillez choisir un référent</option>
+								                <option :value="employee.id" v-for="employee in employeesList">{{employee.name}}</option>
+								            </select>
+							            </div>
+							        </div>
 						        </div>
 						    </div>
 			            </div>
@@ -197,7 +185,7 @@
 		        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex justify-end">
 
 		           	<button v-if="!confirmDelete && data.id" type="button" class="w-full mt-2 mb-2 mr-2 inline-flex mr-auto justify-center rounded-md border border-transparent shadow-sm px-4 py-2  border-red-500 text-base float-left font-medium text-red-500 hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-300 sm:ml-3 sm:w-auto sm:text-sm" @click="confirmDelete = true">Supprimer</button>
-		           	
+
 		           	<div v-if="confirmDelete" class="w-full text-justify-center inline-flex float-left ">
 			           	<button type="button" class="w-full mt-2 mb-2 mr-2 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-500 text-base float-left font-medium text-white hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-300 sm:ml-3 sm:w-auto sm:text-sm" @click="deleteData(data.id)">Confirmer</button>
 			           	<button type="button" class="w-full mt-2 mb-2 mr-2 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 border-red-500 text-base float-left font-medium text-red-500 hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-300 sm:ml-3 sm:w-auto sm:text-sm" @click="confirmDelete = false">Annuler</button>
@@ -205,12 +193,10 @@
 
 		        	<button type="button" class="w-full mt-2 mb-2 mr-2 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  sm:ml-3 sm:w-auto sm:text-sm" @click="modalOpen = false" ref="cancelButtonRef">Annuler</button>
 
-
 		           	<button type="submit" class="w-full mt-2 mb-2 mr-2 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm">
 		           	<span v-if="!data.id"> Ajouter </span>
 		           	<span v-else> Modifier </span>
 		           	</button>
-
 		        </div>
 		    </form>
 		</div>

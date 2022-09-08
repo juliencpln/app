@@ -15,7 +15,6 @@
 		    }
 		  }
 		</script>
-
         <script type="module">
             import {
                 Grid,
@@ -29,11 +28,16 @@
     <body class="bg-gray-50">
     	<?php 
     	if(isset(($this->session->user_session))){
+            // Alimenter les tableaux
             echo \Phalcon\Tag::javascriptInclude("js/table_filler.js");
+            // Gérer les modales
             echo \Phalcon\Tag::javascriptInclude("js/manage_modal.js");
+            // Afficher la liste des pays
             echo \Phalcon\Tag::javascriptInclude("js/country.js");
+            // Fonctionnalités tierces
             echo \Phalcon\Tag::javascriptInclude("js/tools.js");
 
+            // Affichage du menu et des fonctionnalités associées
             $this->partial('layouts/menu');
             echo \Phalcon\Tag::javascriptInclude([
             'src'  => 'js/layout_init.js',
@@ -45,7 +49,6 @@
             echo $this->getContent();
         }
     	?>
-       
 		 <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
 	</body>
 </html>

@@ -15,7 +15,6 @@ function clearForm(vue){
    Object.keys(vue.data).forEach(function(key) {
    		vue.data[key] = '';
 	});
-
 };
 
 // Ajout de la logique à l'application vue
@@ -86,7 +85,6 @@ const mixin_manage_modal = {
 		            	Object.keys(result.data).forEach(key => {
 						  result.data[key].balance = parseFloat(result.data[key].balance).toLocaleString('fr')
 						});
-
 		            	this.companiesList = result.data;
 		            });
 				}	

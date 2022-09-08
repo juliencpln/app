@@ -1,43 +1,35 @@
-
 <div class="min-h-full flex flex-col justify-center p-8 py-12 sm:px-6 lg:px-8">
-    
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-                
-
-
         <p class="text-4xl text-center  font-bold text-black"><span>my</span><span class="font-bold text-indigo-600">ERP</span></p>
         <h2 class="mt-6 text-center text-3xl font-bold text-gray-900">Se connecter</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
-        <span href="#" class="font-medium text-indigo-600"> Utilisez les identifiants que vous avez reçu par email</span>
+            <span href="#" class="font-medium text-indigo-600"> Utilisez les identifiants que vous avez reçu par email</span>
         </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-
-        <?php if(isset($error_login)) {?>
-        <div class="rounded-md bg-red-50 p-4 mb-4">
-            <div class="flex items-center">
-                <div class="flex-shrink-0 text-red-400">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
-                </svg>
-                </div>
-                <div class="ml-3">
-                    <p class="text-sm font-medium text-red-800">
-                    <?php echo $error_login?>
-                    </p>
+            <?php if(isset($error_login)) {?>
+            <div class="rounded-md bg-red-50 p-4 mb-4">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 text-red-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                      <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clip-rule="evenodd" />
+                    </svg>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-red-800">
+                        <?php echo $error_login?>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <?php } ?>
-
-
+            <?php } ?>
             <form class="space-y-6" action="login/connect" method="POST">
                 <div>
                     <label for="username" class="block text-sm font-medium text-gray-700"> Nom d'utilisateur</label>
                     <div class="mt-1">
-                      <input id="username" name="username" type="username" autocomplete="username" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+                        <input id="username" name="username" type="username" autocomplete="username" required="" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
                     </div>
                 </div>
 
@@ -55,7 +47,7 @@
 
             <div class="text-center mt-6">
                 <div class="text-sm">
-                  <span>Vous n'arrivez pas à vous connecter ? <a href="mailto:julien.cpln@gmail.com" class="font-medium text-indigo-600 hover:text-indigo-500"> Contactez-moi</a></span>
+                    <span>Vous n'arrivez pas à vous connecter ? <a href="mailto:julien.cpln@gmail.com" class="font-medium text-indigo-600 hover:text-indigo-500"> Contactez-moi</a></span>
                 </div>
             </div>
         </div>

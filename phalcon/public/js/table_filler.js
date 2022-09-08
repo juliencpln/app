@@ -156,7 +156,6 @@ function tableFill(vue){
 		});
 	}
 
-
 	function getSelected() {
         if (window.getSelection) {
             return window.getSelection().toString();
