@@ -1,6 +1,6 @@
 # ignore
 /phalcon/vendor
 /phalcon/cache
-/mysql
+/mysql/data
 /nginx
-.DS_Store 
+*.DS_Store 
