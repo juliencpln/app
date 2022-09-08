@@ -45,6 +45,20 @@ Toutes permissions
 Lecture seule
 
 
+## Problèmes
+
+Les problèmes pouvant être rencontrés lors de la mise en place de l'environnement : 
+- ERROR: for db  Cannot create container for service db: status code not OK but 500: {"Message":"Unhandled exception: Filesharing has been cancelled"}
+- Résolution : Dans Docker, il faut ajouter le chemin du dossier dans le partage de fichier > Réglages > Ressources > Partage de fichier  
+
+
+## Test unitaires : 
+
+Dans le container PHP en ligne de commande :
+```
+$ vendor/bin/phpunit
+```
+
 ## Captures d'écran
 
 ![Login](assets/connexion.png)
