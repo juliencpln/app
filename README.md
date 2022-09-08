@@ -47,8 +47,8 @@ Lecture seule
 
 ## Captures d'écran
 
-![Login](assets/login.png)
-![Entreprises](assets/entreprise.png)
+![Login](assets/connexion.png)
+![Entreprises](assets/compagnies.png)
 ![Transactions (ajout)](assets/transactions.png)
 ![Mobile - Produits (modification)](assets/produits.png)
 ![Mobile - Menu](assets/menu.png)
