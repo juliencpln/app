@@ -37,7 +37,7 @@ class Companies extends Model
                 $balance -= $total_price;
             }
         }
-
+        
         return $balance;
     }
 }

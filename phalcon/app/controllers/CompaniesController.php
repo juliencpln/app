@@ -7,10 +7,5 @@ class CompaniesController extends ControllerBase
     {
 
     }
-
-    public function getBalanceAction(){
-        echo "ici";
-        return 'ici';
-    }
 }
 
