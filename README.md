@@ -2,7 +2,7 @@
 
 Ce projet a pour but de concevoir et réaliser un mini ERP (Entreprise Ressource Planning). 
 
-> Il est réalisé sous Docker, en PHP 7.4, avec Phalcon 4.0, VueJS 3, MySQL et Adminer
+> Il est réalisé sous Docker, en PHP 7.4, avec Phalcon 4.0, Vue v3.2, TailWindCSS 3.1, MySQL et Adminer
 
 ## Installation
 
