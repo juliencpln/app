@@ -32,6 +32,8 @@ Information de connexion :
 - Mot de passe : user_pw
 - Base de données : app
 
+Vous pouvez importer la base de données en utilisant le fichier .sql dans mysql/app.sql
+
 ###### Connexion
 
 À l'adresse http://localhost/login il est possible de ce connecter via : 
