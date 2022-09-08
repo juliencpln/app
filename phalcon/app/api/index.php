@@ -86,7 +86,7 @@ else
     );
 
     // Gestion de l'ajout et de la modification
-    include("/script/createOrUpdate.php");
+    include("script/createOrUpdate.php");
 
     // Ajout de données dans les entitées
     foreach ($entities as $key => $value) {
